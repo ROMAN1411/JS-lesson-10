@@ -146,11 +146,63 @@ console.log('---------------------Example 3 - User-------------------------');
 }
 console.log('---------------------Example 4 - Нотатки------------------------');
 {
-  // Напиши клас Notes який керує колекцією нотаток у властивості items. Замітка це об'єкт із властивостями text та priority. Додай класу статичну властивість Priority, у якому зберігатиметься об'єкт із пріоритетами.
+  // Напиши клас Notes який керує колекцією нотаток у властивості items.
+  // Замітка це об'єкт із властивостями text та priority.
+  // Додай класу статичну властивість Priority, у якому зберігатиметься об'єкт із пріоритетами.
   // {
   //   LOW: 'low',
   //   NORMAL: 'normal',
   //   HIGH: 'high'
   // }
   // Додай методи addNote(note), removeNote(text) та updateNote(text, newPriority).
+
+  class Notes {
+    static Priority = {
+      LOW: 'low',
+      NORMAL: 'normal',
+      HIGH: 'high',
+    };
+    constructor(note) {
+      this.items = note;
+    }
+
+    addNote(note) {
+      const inArr = this.items.some(({ text }) => text === note.text);
+      if (!inArr) {
+        this.items.push(note);
+      }
+    }
+
+    removeNote(text) {
+      const idx 
+    }
+  }
+
+  const myNotes = new Notes([]);
+
+  myNotes.addNote({
+    text: 'Моя перша замітка',
+    priority: Notes.Priority.LOW,
+  });
+  myNotes.addNote({
+    text: ['Моя перша замітка'],
+    priority: Notes.Priority.LOW,
+  });
+  myNotes.addNote({
+    text: 'Моя перша замітка',
+    priority: Notes.Priority.LOW,
+  });
+  console.log(myNotes.items);
+
+  myNotes.addNote({
+    text: 'Моя друга замітка',
+    priority: Notes.Priority.NORMAL,
+  });
+  console.log(myNotes.items);
+
+  myNotes.removeNote('Моя перша замітка');
+  console.log(myNotes.items);
+
+  myNotes.updateNote('Моя друга замітка', Notes.Priority.HIGH);
+  console.log(myNotes.items);
 }
